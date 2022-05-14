@@ -1,10 +1,11 @@
 package org.design.stepdefs;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import org.design.core.baseclasses.WebDriverProvider;
-import org.design.core.utilities.SyncUtil;
 import org.design.pageobjects.GmailLoginPageObjects;
+import org.design.utilities.ScreenshotUtil;
+import org.design.utilities.SyncUtil;
 
 import com.google.inject.Inject;
 
@@ -21,12 +22,16 @@ public class GmailLoginTest_StepDef {
 	
 	@Inject
 	SyncUtil sync;
+	
+	@Inject
+	ScreenshotUtil util;
 
 	@Given("I navigate to gmail login page")
 	public void openUrl() {
 		System.out.println("I navigate to gmail login page");
 		gmailLoginPO.launchBrowser();
 		gmailLoginPO.NavigateToSignInPage();
+		//fail();
 	}
 
 	@When("I enter valid {string}")

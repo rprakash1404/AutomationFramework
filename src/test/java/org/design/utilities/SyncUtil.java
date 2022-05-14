@@ -1,8 +1,9 @@
-package org.design.core.utilities;
+package org.design.utilities;
 
 import java.time.Duration;
 
-import org.design.core.baseclasses.WebDriverProvider;
+import org.design.stepdefs.SeleniumBaseClass;
+import org.design.stepdefs.WebDriverProvider;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -26,8 +27,8 @@ public class SyncUtil {
 	Wait<WebDriver> wait;
 
 	@Inject
-	public SyncUtil(WebDriverProvider driverFactory) {
-		this.driver = driverFactory.getDriver();
+	public SyncUtil(SeleniumBaseClass baseClass) {
+		this.driver = baseClass.getDriver();
 		jsDriver = (JavascriptExecutor) this.driver;
 	}
 
@@ -45,9 +46,9 @@ public class SyncUtil {
 		wait.until(ec);
 
 	}
-	
+
 	public void staticWait(Duration duration) {
-		 await().atMost(duration).await().until(() -> false);
+		await().atMost(duration).await().until(() -> false);
 	}
 
 }

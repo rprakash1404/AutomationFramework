@@ -1,4 +1,4 @@
-package org.design.core.utilities;
+package org.design.utilities;
 
 public class JsonUtil {
 	

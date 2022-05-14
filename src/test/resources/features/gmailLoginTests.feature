@@ -3,7 +3,7 @@
 @login
 Feature: Test Gmail login
 
-  Scenario Outline: Title of your scenario
+  Scenario Outline: Gmail login verification
     Given I navigate to gmail login page
     When I enter valid <username>
     And I enter invalid <password>
