@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-05-03T21:39:56Z" name="Default suite" finished-at="2022-05-03T21:40:14Z" duration-ms="17946">
+    <groups>
+    </groups>
+    <test started-at="2022-05-03T21:39:56Z" name="Default test" finished-at="2022-05-03T21:40:14Z" duration-ms="17946">
+      <class name="TestNGTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:TestNGTest@5b6ec132]" started-at="2022-05-03T21:39:56Z" name="setup" finished-at="2022-05-03T21:39:56Z" duration-ms="159" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="devToolsTest()[pri:0, instance:TestNGTest@5b6ec132]" started-at="2022-05-03T21:39:56Z" name="devToolsTest" finished-at="2022-05-03T21:40:14Z" duration-ms="17563" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- devToolsTest -->
+        <test-method is-config="true" signature="cleanup()[pri:0, instance:TestNGTest@5b6ec132]" started-at="2022-05-03T21:40:14Z" name="cleanup" finished-at="2022-05-03T21:40:14Z" duration-ms="213" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanup -->
+      </class> <!-- TestNGTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
