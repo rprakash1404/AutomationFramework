@@ -58,7 +58,7 @@ public class GmailLoginPageObjects {
 		TxtBox_UserName.sendKeys(userName);
 		sync.waitForElementToAppear(Btn_Next, Duration.ofSeconds(1));
 		Btn_Next.click();
-		sync.staticWait(Duration.ofSeconds(5));
+		sync.staticWait(Duration.ofSeconds(1));
 	}
 
 	public void enterPassword(String password) {

@@ -3,11 +3,9 @@ package org.design.stepdefs;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.design.utilities.ExtentReportProvider;
+import org.design.utilities.ExtentTestHandler;
 import org.design.utilities.ScreenshotUtil;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.google.inject.Inject;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -19,11 +17,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import lombok.Data;
 
 @ScenarioScoped
-@Data
 public class SeleniumBaseClass {
 
 	WebDriver driver;
@@ -38,6 +33,9 @@ public class SeleniumBaseClass {
 	@Inject
 	ScreenshotUtil screenShotUtil;
 
+	@Inject
+	ExtentTestHandler extentTestHandler;
+
 	@Before(order = 1)
 	public void loadConfig() throws IOException {
 		appConfigs = new Properties();
@@ -46,8 +44,9 @@ public class SeleniumBaseClass {
 
 	@Before(order = 2)
 	public void reportSetUp(Scenario currentScenario) throws IOException {
-		reports = ExtentReportProvider.getInstance();
+		reports = extentTestHandler.getExtentReport();
 		extentTest = reports.startTest(currentScenario.getName());
+		extentTestHandler.setExtentTest(extentTest);
 	}
 
 	@Before(order = 3)
@@ -57,8 +56,9 @@ public class SeleniumBaseClass {
 
 	@AfterStep
 	public void reportStepStatus(Scenario currentScenario) {
+
 		if (currentScenario.isFailed()) {
-			extentTest.log(LogStatus.FAIL, currentScenario.getName(),
+			extentTest.log(LogStatus.FAIL, String.valueOf(currentScenario.getLine()),
 					extentTest.addScreenCapture(screenShotUtil.captureScreenshot()));
 		}
 	}

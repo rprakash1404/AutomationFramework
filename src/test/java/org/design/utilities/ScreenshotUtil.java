@@ -15,7 +15,7 @@ import com.google.inject.Singleton;
 
 import io.cucumber.guice.ScenarioScoped;
 
-@Singleton
+@ScenarioScoped
 public class ScreenshotUtil {
 
 	WebDriver driver;

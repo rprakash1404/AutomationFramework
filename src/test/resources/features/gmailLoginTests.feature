@@ -13,3 +13,4 @@ Feature: Test Gmail login
     Examples:
       | username           | password   |
       | "ratneshprakash06" | "you wish" |
+      #| "ratneshprakash06" | "you wish" |

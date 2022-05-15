@@ -18,7 +18,9 @@ import static org.awaitility.Awaitility.*;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-@Singleton
+import io.cucumber.guice.ScenarioScoped;
+
+@ScenarioScoped
 public class SyncUtil {
 
 	WebDriver driver;
@@ -27,8 +29,8 @@ public class SyncUtil {
 	Wait<WebDriver> wait;
 
 	@Inject
-	public SyncUtil(SeleniumBaseClass baseClass) {
-		this.driver = baseClass.getDriver();
+	public SyncUtil(WebDriverProvider webDriverProvider) {
+		this.driver = webDriverProvider.getDriver();
 		jsDriver = (JavascriptExecutor) this.driver;
 	}
 
@@ -48,7 +50,11 @@ public class SyncUtil {
 	}
 
 	public void staticWait(Duration duration) {
-		await().atMost(duration).await().until(() -> false);
+		try {
+			await().atMost(duration).await().until(() -> false);
+		} catch (Exception ex) {
+
+		}
 	}
 
 }
